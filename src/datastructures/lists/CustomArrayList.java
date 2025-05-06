@@ -19,6 +19,72 @@ public class CustomArrayList<T> implements List<T> {
         }
     }
 
+    @Override
+    public T get(int index) {
+        if(index < 0 || index > size - 1){
+            throw new IndexOutOfBoundsException();
+        }
+        return (T) elements[index];
+    }
+
+    @Override
+    public T set(int index, T element) {
+        if(index < 0 || index > size - 1){
+            throw new IndexOutOfBoundsException();
+        }
+        elements[index] = element;
+        return element;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    @Override
+    public boolean add(Object o) {
+        if(o == null){
+            throw new NullPointerException();
+        }
+        ensureCapacity();
+        elements[size] = o;
+        size++;
+        return true;
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        for(Object obj : elements){
+            if(obj.equals(o)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        if(o == null){
+            throw new NullPointerException();
+        }
+        int i = 0; //for counting the index in loop.
+        for(Object obj : elements){
+            if(obj.equals(o)){
+                for(int j = i; j< size - 1; j++){
+                    elements[j] = elements[j+1];
+                }
+                return true;
+            }
+            i++;
+        }
+        return false;
+    }
+
     // TODO: Override and fill the methods to complete the data structure
 
 }
