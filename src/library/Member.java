@@ -1,26 +1,28 @@
 package library;
 
+import datastructures.stacks.CustomStack;
+
 public class Member {
     private String memberId;
     private String name;
-    // TODO: Define a data structure to hold transactions of each member
+    private CustomStack<Transaction> memberTransactions;
+    private static final int MAX_TRANSACTIONS = 100;
 
     public Member(String memberId, String name) {
         this.memberId = memberId;
         this.name = name;
-        // TODO: Initialize your data structure here
+        this.memberTransactions = new CustomStack<>(MAX_TRANSACTIONS);
     }
 
     public String getMemberId() { return memberId; }
     public String getName() { return name; }
 
     public void addTransaction(Transaction transaction) {
-        // TODO
+        memberTransactions.add(transaction);
     }
 
     public Transaction getLastTransaction() {
-        // TODO
-        return null;
+        return memberTransactions.peek();
     }
 
     @Override

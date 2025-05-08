@@ -31,7 +31,7 @@ public class BookManager {
     }
 
     public void addToWaitlist(String isbn, String memberId) {
-        books.get(isbn).addToWaitlist(MemberManager.getMembers().get(memberId));
+        books.get(isbn).addToWaitlist(memberManager.getMember(memberId));
     }
 
     public Member getNextFromWaitlist(String isbn) {
