@@ -1,20 +1,21 @@
 package library;
 
+import datastructures.lists.CustomArrayList;
+
 public class Book {
     private String title;
     private String author;
     private String isbn;
     private boolean isAvailable;
 
-    // TODO: Define a data structure to hold members waiting for this book
+    private CustomArrayList<Member> waitingList;
 
     public Book(String title, String author, String isbn) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
         this.isAvailable = true;
-
-        // TODO: Initialize your data structure here
+        this.waitingList = new CustomArrayList<>();
     }
 
     public String getTitle() { return title; }
@@ -24,17 +25,18 @@ public class Book {
     public void setAvailable(boolean available) { isAvailable = available; }
 
     public void addToWaitlist(Member member) {
-        // TODO
+        waitingList.add(member);
     }
 
     public Member getNextInWaitlist() {
-        // TODO
+        if(!waitingList.isEmpty()){
+            return waitingList.get(waitingList.size() - 1);
+        }
         return null;
     }
 
     public boolean hasWaitlist() {
-        // TODO
-        return false;
+        return !waitingList.isEmpty();
     }
 
     @Override
