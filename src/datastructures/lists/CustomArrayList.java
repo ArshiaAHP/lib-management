@@ -3,6 +3,7 @@ package datastructures.lists;
 import datastructures.interfaces.List;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class CustomArrayList<T> implements List<T> {
     private static final int INITIAL_CAPACITY = 10;
@@ -32,8 +33,9 @@ public class CustomArrayList<T> implements List<T> {
         if(index < 0 || index > size - 1){
             throw new IndexOutOfBoundsException();
         }
+        Object temp = elements[index];
         elements[index] = element;
-        return element;
+        return (T) temp;
     }
 
     @Override
@@ -84,7 +86,4 @@ public class CustomArrayList<T> implements List<T> {
         }
         return false;
     }
-
-    // TODO: Override and fill the methods to complete the data structure
-
 }
