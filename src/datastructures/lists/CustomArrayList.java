@@ -30,6 +30,9 @@ public class CustomArrayList<T> implements List<T> {
 
     @Override
     public T set(int index, T element) {
+        if(element == null){
+            throw new NullPointerException();
+        }
         if(index < 0 || index > size - 1){
             throw new IndexOutOfBoundsException();
         }
